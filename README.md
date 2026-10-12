@@ -1,0 +1,60 @@
+# Mod Necromante — Battle Brothers
+
+Mod para o jogo **Battle Brothers** (versão 1.5 + DLCs) que adiciona a classe **Necromante**: um personagem que ergue mortos-vivos para lutar ao lado da companhia.
+
+Funciona no jogo sem modificações (vanilla), **sem precisar de MSU ou de outros frameworks de mods**.
+
+## O que o mod adiciona
+
+- **Origem "O Necromante"**: nova campanha que começa com um Necromante e dois saqueadores de túmulos.
+- **Erguer o Morto**: invoca esqueletos (guerreiros, arqueiros, soldados, lanceiros, besteiros, etc.) que agem sozinhos na batalha.
+- **Limite de mortos por nível**: 2 mortos no nível 1, +1 por nível, até 12 no nível 11. A subclasse soma vagas extras.
+- **Equipamento por nível**: os mortos usam armas e armaduras sorteadas conforme o nível do Necromante (de trapos e facas a cotas de escamas, placas, piques e bestas pesadas).
+- **Veneno do Cadáver e Necrose**: efeitos que acumulam nos inimigos atingidos pelos mortos.
+- **Grimório**: árvore de perks própria, escolhida por um evento quando o Necromante sobe de nível.
+- **8 subclasses** (escolhidas no nível 3): Senhor da Legião, Lich, Mestre da Peste, Cavaleiro da Morte, Atirador Espectral, Coveiro, Ossário e Maestro dos Ossos, cada uma com habilidades e perks próprios.
+- **Espólios dos mortos**: depois da batalha, alguns itens gastos dos mortos podem ser guardados ou oferecidos em troca de XP ou de ouro.
+
+## Instalação
+
+1. Baixe ou gere o arquivo `mod_necromante.zip` (veja "Compilar" abaixo).
+2. Copie o `.zip` para a pasta `data` do jogo, por exemplo:
+   `C:\Program Files (x86)\Steam\steamapps\common\Battle Brothers\data\`
+3. Comece uma nova campanha e escolha a origem **"O Necromante"**.
+
+## Compilar
+
+O script `build.ps1` verifica a sintaxe de todos os `.nut`, empacota a pasta `scripts` e copia o `.zip` para o jogo:
+
+```
+powershell -ExecutionPolicy Bypass -File build.ps1
+```
+
+Ele precisa do `sq.exe` do **Battle Brothers Mod Kit** em `tools\modkit\` (não incluído neste repositório). Use `-SemInstalar` para só gerar o `.zip`.
+
+## Testes
+
+Os testes rodam fora do jogo, com um ambiente simulado (`tests/bb_mock.nut`):
+
+```
+powershell -ExecutionPolicy Bypass -File testes.ps1
+```
+
+## Balanceamento
+
+Todos os números do mod (limite de mortos, atributos, recargas, equipamento por nível, espólios) ficam em um só arquivo: `scripts/config/necro_constants.nut`.
+
+## Estrutura
+
+```
+scripts/
+  config/        constantes de balanço e funções auxiliares
+  entity/        os tipos de mortos-vivos
+  skills/        habilidades ativas, perks, efeitos e passivas
+  events/        Grimório (perks) e Espólios dos mortos
+  ai/            comportamento dos mortos na batalha
+  scenarios/     origem "O Necromante"
+tests/           testes fora do jogo
+```
+
+Mais detalhes de uso e um roteiro de testes no jogo em [LEIA-ME.md](LEIA-ME.md).

@@ -1,0 +1,7 @@
+# Arquivos gerados
+mod_necromante.zip
+*.cnut
+
+# Ferramentas de terceiros e scripts do jogo (não distribuir)
+tools/modkit/
+tools/vanilla/
