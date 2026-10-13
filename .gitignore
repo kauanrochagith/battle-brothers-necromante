@@ -5,3 +5,5 @@ mod_necromante.zip
 # Ferramentas de terceiros e scripts do jogo (não distribuir)
 tools/modkit/
 tools/vanilla/
+build_en/
+mod_necromante_en.zip

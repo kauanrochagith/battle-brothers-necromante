@@ -1,0 +1,240 @@
+0	Necromancer
+1	Necro
+2	Bone Warrior
+3	Noble Soldier
+4	Sepulchral Paladin
+5	Spearman
+6	Butcher
+7	Archer
+8	Crossbowman
+9	Sepulchral Mage
+10	Reinforced Bones
+11	Your undead gain
+12	 Melee and Ranged Defense and
+13	 attack damage.
+14	Dead Discipline
+15	When attacking, each undead gains
+16	 damage and
+17	 skill per adjacent allied undead (max.
+18	Time of War
+19	Raise the Dead has
+20	 turn of cooldown (minimum
+21	Reach of the Dead
+22	Ranged skills of all your undead (including the Mages' undead) gain
+23	 maximum range. Ranged undead also gain
+24	 Vision.
+25	Unholy Ammunition
+26	Ranged attacks from the undead and the Necromancer also apply
+27	Corpse Poison
+28	, in addition to Necrosis.
+29	Toxic Blood
+30	 chance for each Poison or Necrosis hit to apply an extra stack.
+31	Noble Lineage
+32	Unlocks the types
+33	 for Raise the Dead.
+34	Awaken the Mage
+35	Grants the skill
+36	: summons a Sepulchral Mage that raises undead with its own cooldown.
+37	Mark of Command
+38	: your undead prioritize the target and deal more damage to it.
+39	Endless Army
+40	Each undead has
+41	 chance to rise again as a Fractured Skeleton when it dies (half health, armor and damage). It does not rise twice.
+42	Crypt Arsenal
+43	Independent Reach
+44	All attack skills of the Necromancer and the undead gain
+45	 range, whatever the weapon. Melee attacks now reach like polearms.
+46	Dead Essence
+47	Each enemy killed by Poison, Necrosis or an undead gives 1 charge (max.
+48	 per combat). Each charge:
+49	 necromantic damage and
+50	 undead skill.
+51	Voice of the Necromancer
+52	Undead within
+53	 tiles of the Necromancer gain
+54	 Initiative and
+55	 Resolve.
+56	Master of Necromancy
+57	Poison and Necrosis last
+58	 turn and deal
+59	 damage per stack. Undead enemies are no longer immune and suffer
+60	 of the effect.
+61	Dark Bond
+62	 of the damage an undead would take is absorbed by the Necromancer as Fatigue. If Fatigue runs out, nothing is absorbed.
+63	Echo of the Mage
+64	Sepulchral Mages also use Mark of Command and Death Harvest (if you have them) with
+65	 of the potency, and receive
+66	 of the bonuses from Reinforced Bones and Voice of the Necromancer.
+67	Death Harvest
+68	: detonates all Poison and Necrosis on enemies at once.
+69	Substitute Corpse
+70	Once per combat, when the Necromancer would take a fatal blow, an adjacent undead takes the blow and dies in his place.
+71	Cloud of Bones
+72	The Necromancer gains
+73	 Melee and Ranged Defense while there are at least
+74	 undead on the field.
+75	Redoubled Rot
+76	The damage per stack and the duration of Poison and Necrosis applied by the undead and the Necromancer are multiplied by
+77	. The stack cap does not change.
+78	 Cost: undead lose
+79	% of maximum health.
+80	Pact of the Ten Thousand Dead
+81	Whenever an enemy dies,
+82	 chance for it to rise as a Fractured Skeleton next to the Necromancer (melee or ranged, depending on the enemy). Max.
+83	 per combat.
+84	Bone Sentinel
+85	Spectral Acolyte
+86	Putrid One
+87	Bone Rat
+88	Dead Knight
+89	Skeletal Squire
+90	Spectral Hunter
+91	Bone Abomination
+92	Reanimated
+93	Bone Tower
+94	All-Out Attack
+95	Undead gain +15% damage and +10 skill and prioritize the marked target, but lose 10 defense.
+96	Wall
+97	Undead gain +20 Defense and 20% damage resistance, and hold position near the Necromancer.
+98	Regroup
+99	Undead move up to 4 tiles toward the Necromancer and heal 10% of maximum health.
+100	Coordinated Fire
+101	Ranged undead focus the same target; each shooter after the first gains +10% hit chance (max. +30%).
+102	Necromancer
+103	Vampire
+104	Ghost
+105	Kraken
+106	Alp
+107	Hexe
+108	Schrat
+109	Mortar
+110	Lorekeeper
+111	Wall of Dead Shields
+112	Each undead gains
+113	 Melee and Ranged Defense per adjacent undead with a shield (max.
+114	Chain of Command
+115	A Noble Soldier becomes
+116	Captain
+117	: undead within
+118	 tiles of him gain
+119	 Resolve. If the Captain dies, another Noble Soldier is promoted after
+120	 turns.
+121	Eternal Veterans
+122	 Melee Skill per enemy they kill (max.
+123	Bone Standard
+124	When raising a group, one undead carries the
+125	Standard
+126	 tiles gain
+127	 Resolve. If the bearer dies, another undead takes up the standard the next turn.
+128	Acceptable Losses
+129	When an undead falls, adjacent undead gain
+130	 damage for
+131	 turns (stacks up to
+132	Dark Flank
+133	Undead attacking a target surrounded by another allied undead (flank or back) gain
+134	 hit chance.
+135	Eternal Wall
+136	Noble Soldiers and Paladins within
+137	 tiles of the Necromancer absorb
+138	 of the damage he would take (split among them).
+139	Countless Legion
+140	Undead limit
+141	 and Raise the Dead cooldown
+142	 turn (minimum
+143	School of Mages
+144	 Sepulchral Mages at most (up to
+145	Perfect Echo
+146	The Mages inherit
+147	 of your passives (normally they inherit
+148	Parallel Conjuring
+149	The Mages' summoning cooldown drops by
+150	 turns (minimum
+151	Book of the Dead
+152	Each Mage gains
+153	 summoning use per combat.
+154	Unholy Arcana
+155	The Mages use
+156	Necrotic Ray
+157	 on their own (damage
+158	, cooldown
+159	Silence of the Crypt
+160	Enemies with ranged attacks within
+161	 tiles of a Mage suffer
+162	 Ranged Skill.
+163	Phylactery
+164	Once per combat, if the Lich would die, he comes back with
+165	 health and the Mages gain
+166	Archmage
+167	Lich's Necrotic Ray: damage
+168	 and range
+169	Contagion
+170	Enemies with
+171	 or more stacks spread
+172	 stack per turn to adjacent enemies.
+173	Morbid Immunity
+174	The Necromancer becomes immune to poison and bleeding. Putrid Ones regenerate
+175	 health per turn.
+176	Bloated Bodies
+177	When a Putrid One dies, it releases a gas that applies
+178	 Poison stacks to nearby enemies.
+179	Cadaverous Fever
+180	Affected enemies lose
+181	 Initiative per stack of Poison and Necrosis (max.
+182	Host
+183	An enemy killed with
+184	 or more stacks rises as
+185	 (max.
+186	 per combat).
+187	Virulence
+188	Poison and Necrosis stack cap
+189	. Poison and Necrosis affect undead enemies with
+190	Pandemic
+191	Epidemic copies
+192	 of the stacks and reaches enemies within
+193	 tiles.
+194	Bone Armor
+195	The Fatigue penalty of armor and helmet drops by
+196	 and the Necromancer gains
+197	 maximum Fatigue.
+198	Necrotic Blade
+199	The Necromancer's blows apply
+200	 Necrosis stack (
+201	 on a head hit).
+202	Oath of the Void
+203	The Necromancer becomes immune to morale, fear and stun.
+204	Blood Bond
+205	 of the health damage the Necromancer deals becomes healing, split among wounded undead.
+206	Doom Elite
+207	Undead gain
+208	 health and
+209	 damage. Call the Knight summons
+210	Sentinel
+211	Adjacent undead counterattack whoever attacks the Necromancer (once per turn per undead).
+212	Funeral Strike
+213	The Necromancer's attacks against targets with
+214	+ stacks or marked ignore an extra
+215	 of armor.
+216	Eternal Loyalty
+217	Dead Knights that die come back once with
+218	 health.
+219	War Commander
+220	 max AP and Dark Execution with cooldown
+221	Triple Shot
+222	A ranged undead that shoots with full AP fires
+223	 times at the same target and spends all AP (each shot at
+224	 hit chance).
+225	Spectral Sight
+226	Ranged undead gain
+227	Ghost Stance
+228	 AP to move and shoot in the same turn; shots after moving have
+229	 hit chance.
+230	Rain of Arrows
+231	Every
+232	 turns, your archers fire
+233	 arrows on their own at an area around the spot with the most enemies.
+234	Ranged Execution
+235	Killing a target with the Hunter's Mark resets the Mark's cooldown and gives
+236	 AP to the killer.
+237	Piercing Arrows
+238	Shots from ranged undead ignore an extra
+239	Hunter's Eye

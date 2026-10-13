@@ -15,6 +15,12 @@ Funciona no jogo sem modificações (vanilla), **sem precisar de MSU ou de outro
 - **8 subclasses** (escolhidas no nível 3): Senhor da Legião, Lich, Mestre da Peste, Cavaleiro da Morte, Atirador Espectral, Coveiro, Ossário e Maestro dos Ossos, cada uma com habilidades e perks próprios.
 - **Espólios dos mortos**: depois da batalha, alguns itens gastos dos mortos podem ser guardados ou oferecidos em troca de XP ou de ouro.
 
+## Versão em inglês (English version)
+
+There is an **English version** of the mod: download `mod_necromante_en.zip` from the [Releases](https://github.com/kauanrochagith/battle-brothers-necromante/releases) page and copy it (without unzipping) to the game's `data` folder. Install **only one** of the two files (Portuguese or English).
+
+O código-fonte é um só, em português. A versão em inglês é gerada pelo `build_en.ps1`, que troca os textos pelas traduções de `tools/en/textos_en.json` (textos novos aparecem ali vazios para traduzir; `tools/en/gerar_en.py juntar` confere variáveis, cores e quebras de linha).
+
 ## Instalação
 
 1. Baixe ou gere o arquivo `mod_necromante.zip` (veja "Compilar" abaixo).
@@ -65,5 +71,5 @@ O mod funciona no jogo original sem hooks. Com o **Legends** (que exige MSU e Mo
 
 ## Versões
 
-- **1.0.1**: compatibilidade com o Legends; o Grimório tem pontos próprios (1 por nível) e a árvore de perks normal fica livre; corrigido o travamento em combate quando um inimigo morria pelo Veneno do Cadáver/Necrose (o dano agora sai no fim do turno do alvo).
+- **1.0.1**: versão em inglês (arquivo separado); compatibilidade com o Legends; o Grimório tem pontos próprios (1 por nível) e a árvore de perks normal fica livre; corrigido o travamento em combate quando um inimigo morria pelo Veneno do Cadáver/Necrose (o dano agora sai no fim do turno do alvo).
 - **1.0.0**: primeira versão.

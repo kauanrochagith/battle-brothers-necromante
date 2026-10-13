@@ -1,0 +1,429 @@
+240	Spectral Hunters shoot every turn and gain
+241	Memory of the Corpse
+242	The reanimated keeps
+243	 of the dead one's own skills.
+244	Corpse Eater
+245	Grants
+246	: for
+247	 AP, the Necromancer consumes an adjacent corpse and recovers
+248	 Fatigue.
+249	Efficient Gravedigger
+250	Reanimate Corpse costs
+251	 AP (minimum
+252	Ancient Battlefield
+253	At the start of each combat,
+254	 Fractured Skeletons rise around the Necromancer.
+255	No Rest
+256	Reanimated undead do not crumble over time and come back once when they die, with
+257	Stolen Army
+258	Reanimating an elite enemy (champion) gives
+259	 health and damage to the reanimated.
+260	Wandering Graveyard
+261	At the end of combat, each reanimated has
+262	 chance to leave its equipment as loot.
+263	Master of Corpses
+264	Reanimated undead keep
+265	 of the original's health and skills (instead of
+266	Reaper
+267	Your own fallen undead also leave a corpse and can be reanimated once.
+268	Fresh Bone
+269	Summoned skeletons gain
+270	 health (fusion keeps the bonus).
+271	Colossus
+272	Abominations gain
+273	 health.
+274	Spinning Smash
+275	Abominations gain a spinning attack that hits all adjacent targets, with
+276	Quick Fusion
+277	Bone Fusion with cooldown
+278	 and needing only
+279	 skeletons.
+280	Bone Stitching
+281	Abominations regenerate
+282	 health per turn while there are adjacent skeletons.
+283	Bone Artillery
+284	Fusing archers creates a
+285	 that cannot move and fires Bone Spears at long range.
+286	Bone Lineage
+287	Abomination blows apply
+288	 Poison stacks.
+289	Alpha Abomination
+290	The first Abomination becomes
+291	Alpha
+292	 attributes, immune to knockback, fear and stun (max. 1).
+293	Rising from the Bones
+294	When an Abomination dies, it splits into
+295	 Fractured Skeletons.
+296	Bone Baton
+297	Orders last
+298	 turn.
+299	Synchrony
+300	When
+301	+ undead attack the same target in the same turn, the following ones gain
+302	 damage (max.
+303	Double Order
+304	Two Orders can be active at the same time; the older one keeps
+305	Tactical Score
+306	All-Out Attack and Coordinated Fire also make blows ignore an extra
+307	Choir of Bones
+308	Enemies within
+309	 tiles of
+310	 or more undead suffer
+311	Perfect Cadence
+312	Give Order costs
+313	 AP and has cooldown
+314	Crescendo
+315	Each consecutive turn with the same Order active gives
+316	 damage to the undead (max.
+317	Final Opus
+318	: once per combat, all 4 Orders are active at the same time for
+319	 turns, at 100% effect.
+320	Noble Soldiers and Sepulchral Paladins gain
+321	 armor.
+322	 of the damage a Sepulchral Mage would take is absorbed by the Lich as Fatigue. If Fatigue runs out, nothing is absorbed.
+323	Each skeleton has
+324	Lord of the Legion
+325	Formation general: a frontline army.
+326	The undead fight better side by side.
+327	No range; the Necromancer is exposed if the line breaks.
+328	Lich
+329	Archmage: the Sepulchral Mages are the army.
+330	Several Mages, each with its own cooldown and uses, copying the Lich's summons.
+331	Frail undead and a vulnerable Lich.
+332	Plague Master
+333	Attrition and contagion.
+334	Poison and Necrosis spread among enemies.
+335	Against undead the effect is greatly reduced.
+336	Death Knight
+337	Frontline fighter with a few elite undead.
+338	The Necromancer fights in person; the undead are few, strong and bound to him.
+339	Few units; the Necromancer is on the front line.
+340	Spectral Archer
+341	Soul hunter: ranged damage.
+342	Range, marking and coordinated volleys.
+343	Fragile if the escort falls.
+344	Gravedigger
+345	Corpse resurrection: bodies are the resource.
+346	Barely summons; raises whatever dies, on either side.
+347	Slow start; depends on casualties in the fight.
+348	Ossuary
+349	Architect of abominations.
+350	Fuses skeletons into a giant Abomination and can split it again.
+351	Few units, but large ones: an isolated Abomination is a single point of failure.
+352	Bone Maestro
+353	Synchrony commander.
+354	Group Orders: the undead act in coordination.
+355	Without active Orders, the army is ordinary.
+356	State
+357	Legends
+358	Peso
+359	 raises
+360	 (Fractured)
+361	 rises from the dead
+362	 (Captain)
+363	 takes command of the legion
+364	 raises the Bone Standard
+365	Corpse
+366	 reanimates
+367	 (Alpha)
+368	Reanimated:
+369	Necromancer: corpse item could not be copied:
+370	Stamina
+371	Helmets
+372	The Grimoire
+373	the common trunk
+374	 opens the grimoire by candlelight. The pages whisper the secrets of
+375	).\n\n[color=#bcad8c]Grimoire points:
+376	[/color]\n\nEach choice costs 1 Grimoire point (earned every level). Normal perk points stay free for the game's perk tree.
+377	[/color]:
+378	Learn
+379	See another row
+380	Decide later (until the next level)
+381	The dead listen.
+382	 learned [color=#bcad8c]
+383	[img]gfx/ui/events/event_76.png[/img]The time of the Oath has come.
+384	 must choose whom the dead will serve.\n\n[color=#bcad8c]The choice is PERMANENT[/color]: it defines the undead types, the skills and the perk tree of this Necromancer. Choose a subclass to see the details before confirming.
+385	See other subclasses
+386	Swear (permanent)
+387	Back
+388	\n\n[color=#bcad8c]Weakness:[/color]
+389	\n\nOnce sworn, there is no going back.
+390	Undead limit: that of level
+391	(no bonus)
+392	 (includes up to
+393	 Mages)
+394	Undead types:
+395	none yet
+396	 type(s) in development)
+397	Subclass skills:
+398	in development
+399	Perks available in the tree:
+400	 of 10
+401	Let the dead march.
+402	 swore as [color=#bcad8c]
+403	[/color]. There is no going back.
+404	Old perk removed and point refunded:
+405	common trunk
+406	row
+407	Spoils of the Dead
+408	[img]gfx/ui/events/event_76.png[/img]When the battle ends, the undead collapse and almost all of their gear turns to dust with them. Only a little, worn out, is still of use. You can keep it all, or offer the spoils to the dark powers in exchange for knowledge or gold.\n\n[color=#bcad8c]
+409	 item(s), total value
+410	 crowns.[/color]
+411	Take the spoils
+412	Offer for XP (+
+413	 XP for the Necromancer)
+414	Offer for gold (+
+415	 crowns)
+416	Move on.
+417	Nivel
+418	Condition
+419	 other item type(s)
+420	 item(s) stored in the stash
+421	Stash full:
+422	 item(s) sold for [color=
+423	[/color] crowns
+424	 item(s) lost
+425	 receives [color=
+426	[/color] XP
+427	You receive [color=
+428	The Necromancer
+429	[p=c][img]gfx/ui/events/event_76.png[/img][/p][p]Cast out of every village, you learned that the living are expensive and the dead are loyal. With two grave robbers at your side, it is time to build an army that does not bleed, does not flee and does not ask for wages.\n\n[color=#bcad8c]Necromancer:[/color] Start with a Necromancer and two grave robbers.\n[color=#bcad8c]Dark Followers:[/color] Other Necromancers may appear for hire in towns.[/p]
+430	%name% did not ask to lead anyone. But the two grave robbers who follow him saw what he did in the graveyard of %townname%, and they have not left his side since.
+431	]On cooldown:
+432	 turn(s)[/color]
+433	Cooldown: [color=
+434	[/color] turns
+435	Awakens a Sepulchral Mage behind the front line. The Mage raises undead on its own, with its own cooldown.
+436	Active Mages:
+437	Each Mage raises undead up to
+438	 times per combat, with
+439	x the cooldown of each type
+440	 awakens a
+441	Cycle Undead Type
+442	Chooses which undead type Raise the Dead will summon. Costs no AP or Fatigue.
+443	]Your subclass has no undead types available yet.[/color]
+444	Current: [color=
+445	[/color] | Next:
+446	Unlocked:
+447	 will now raise:
+448	Consumes an adjacent corpse to catch his breath.
+449	Recovers [color=
+450	[/color] Fatigue
+451	 devours a corpse
+452	Soul Harvest
+453	Consumes the corpses on the field to patch up the Necromancer's undead.
+454	Consumes up to
+455	 corpses and heals your undead by [color=
+456	%[/color] of maximum health
+457	 harvests the souls of
+458	 corpse(s)
+459	Reanimate Corpse
+460	Raises a corpse from the battlefield with the gear and trade it had in life.
+461	The reanimated keeps [color=
+462	%[/color] of the original's health and skills
+463	Corpses in range:
+464	 | Undead (weighted):
+465	Detonates at once all Corpse Poison and Necrosis on every enemy on the field.
+466	Multiplier: [color=
+467	[/color] of the remaining damage, ignoring armor
+468	Now:
+469	 enemy(ies),
+470	 total damage
+471	 uses Death Harvest on
+472	 enemy(ies)
+473	Call the Knight
+474	Calls elite dead knights from the grave, bound to the Necromancer.
+475	Summons [color=
+476	[/color] Dead Knights
+477	Dark Execution
+478	A blow from the Necromancer followed by an attack from all nearby undead against the same target.
+479	Your blow: [color=
+480	%[/color] damage and [color=
+481	%[/color] hit chance
+482	Then all undead within
+483	 tiles attack the same target (moving up to
+484	 tiles)
+485	Funeral Charge
+486	Points at an enemy: the nearest undead rush at it and attack immediately.
+487	Up to
+488	 melee undead move up to
+489	 tiles and attack the target for free; next turn they have [color=
+490	[/color] AP
+491	 orders the Funeral Charge against
+492	 undead)
+493	Form Line
+494	The surrounding melee undead close ranks: shields together, immune to knockback.
+495	Melee undead within
+496	 tiles: [color=
+497	[/color] Defense for
+498	 turns, immune to knockback (+
+499	 next to another undead in formation)
+500	 orders: form line! (
+501	Collective Conjuring
+502	All ready Sepulchral Mages raise undead at the same time.
+503	Ready Mages:
+504	 conducts the Collective Conjuring (
+505	A ray of sepulchral energy that pierces any armor.
+506	Deals [color=
+507	[/color] damage that ignores armor
+508	Fixed hit chance of [color=
+509	%[/color] | Range
+510	 hits
+511	 with the Necrotic Ray (
+512	The Necrotic Ray of
+513	 misses
+514	Cycle Order
+515	Chooses which Order Give Order will activate. Costs no AP or Fatigue.
+516	[/color] | Next:
+517	 prepares the Order:
+518	Once per combat, all Orders sound at the same time.
+519	All 4 Orders at 100% for
+520	 turns. Once per combat.
+521	 conducts the Final Opus!
+522	Give Order
+523	Conducts the undead with the selected Order.
+524	Selected Order: [color=
+525	[/color] -
+526	Duration:
+527	 turns
+528	Active:
+529	 turn(s))
+530	 orders:
+531	Death Harvest (Mage)
+532	Mark of Command (Mage)
+533	Raise the Dead (Mage)
+534	The Mage raises a group of undead of one of the types the Necromancer knows.
+535	Summons this combat:
+536	Necrotic Ray (Mage)
+537	Marks an enemy. Your undead hunt it with priority and it takes more damage from the undead, the Necromancer, Poison and Necrosis.
+538	Range: [color=
+539	[/color] tiles | Duration:
+540	Undead prioritize the target; +
+541	% damage from undead/Necromancer; +
+542	% Poison and Necrosis damage
+543	If the target dies marked:
+544	% chance to reset the cooldown
+545	 marks
+546	Bone Fusion
+547	Fuses a skeleton and the nearest ones into a Bone Abomination.
+548	Fuses
+549	 skeletons (within
+550	 tiles of the chosen one). Health =
+551	 per skeleton
+552	Abominations/Towers:
+553	 (each takes
+554	 slots)
+555	 fuses
+556	 skeletons:
+557	Split Abomination
+558	Breaks a Bone Abomination back into the skeletons that formed it.
+559	Turns back into the fused skeletons, with the same health percentage
+560	 splits the Abomination into
+561	 skeletons
+562	Plague Cloud
+563	Releases a pestilent cloud. Whoever starts their turn inside it gets poisoned.
+564	Area of radius
+565	 for
+566	 turns: enemies inside gain [color=
+567	[/color] Poison stack at the start of their turn
+568	 releases a Plague Cloud
+569	Epidemic
+570	An enemy's disease jumps to those around it.
+571	Copies [color=
+572	%[/color] of the target's Poison and Necrosis stacks to enemies within
+573	 tiles
+574	 spreads the Epidemic from
+575	 to
+576	Raise the Dead
+577	Raises a group of undead of the selected type on the free tiles around you. Melee ones appear in front, shooters behind. Each type has its own cooldown.
+578	Selected type: [color=
+579	[/color] (group of
+580	Undead on the field (weighted):
+581	 (cooldown
+582	Hunter's Mark
+583	Marks a prey: the undead's shots find it more easily and wound it more.
+584	For
+585	 turns: [color=
+586	%[/color] hit chance and [color=
+587	%[/color] damage for your shots against the target
+588	 marks the prey
+589	Phantom Volley
+590	All undead shooters that can reach the target fire at it at once.
+591	 ranged undead shoot the target for free, with [color=
+592	 commands the Phantom Volley (
+593	 shooters)
+594	Necromancers are commanders, not fighters. Frail of body but unshakable of will, they raise the dead to fight in their place.
+595	%name% the necromancer left the %companyname% on a moonless night. They say he now rules a forgotten fortress in the north, guarded by ranks of dead who never sleep.
+596	%name% the necromancer left the company and was hunted down by an order of witch hunters. They burned him in the square of some village. The villagers swear that, that night, the dead in the graveyard stirred in their graves.
+597	the Necromancer
+598	the Defiler
+599	the Pale
+600	Master of Bones
+601	the Sepulchral
+602	Lord of Graves
+603	Background:
+604	Frail body: [color=
+605	]fewer Hitpoints[/color]
+606	Iron will: [color=
+607	]high Resolve[/color]
+608	{%name% was driven out of %townname% after the gravediggers found open, empty graves. | No one in %townname% knows where %name% came from, only that the dogs howl when he passes. | %name% spent years studying forbidden tomes in an abandoned crypt near %townname%.} {He talks to the dead the way one talks to old friends, and sometimes swears they answer. | They say he does not fear death because he has already bargained with it. | The priests call him an abomination; he calls them a waste of good corpses.} {Now he seeks a mercenary company: where there is war there are dead, and where there are dead there are soldiers. | A mercenary company gives him what no village would: a battlefield full of recruits who ask for no wages.}
+609	Events
+610	The fall of a bone brother only fuels this undead's fury.
+611	%[/color] damage for
+612	 more turn(s)
+613	Charge Breath
+614	This undead threw itself into a charge and is still recovering.
+615	[/color] AP next turn
+616	Loses [color=
+617	[/color] health at the end of each turn, ignoring armor
+618	Stacks: [color=
+619	[/color] | Turns left: [color=
+620	 sprouts from the infected body
+621	In Formation
+622	This undead closes ranks with the others: shields together, feet planted on the ground.
+623	[/color] Melee and Ranged Defense (+
+624	 next to another undead in formation)
+625	Immune to being knocked back or knocked down | Turns left:
+626	This target has been marked by a Spectral Archer. The undead's shots seek it out.
+627	Shots against it: [color=
+628	%[/color] damage
+629	Turns left:
+630	This character has been marked by a Necromancer. The undead hunt it with priority.
+631	Takes [color=
+632	%[/color] damage from undead and the Necromancer
+633	%[/color] Poison and Necrosis damage
+634	Turns left: [color=
+635	Necrosis
+636	Rotted alive
+637	This character's flesh is rotting, weakening its blows.
+638	Phylactery Fury
+639	The master has returned from beyond, and this Mage's magic burns stronger.
+640	Died of poison
+641	A putrid corpse poison runs through this character's veins.
+642	Necromancer perk - common trunk
+643	Old Necromancer perk (refunded at the Oath)
+644	Necromancer perk -
+645	, row
+646	Necromancer: perk
+647	 blocked (other subclass)
+648	 throws itself in front of the blow and dies in place of
+649	 recovers through the Phylactery!
+650	Raised Dead
+651	A dead one raised by a Necromancer. It feels no fear, does not flee and does not bleed.
+652	]Fractured[/color]: half health, armor and damage
+653	Carries the [color=
+654	]Bone Standard[/color]
+655	Turns to dust in [color=
+656	[/color] turn(s)
+657	Reloading the bow: does not shoot this turn
+658	Imovel
+659	 crumbles to dust
+660	 comes back from death, loyal to its master
+661	 rises from the Abomination's remains
+662	Info
+663	 refuses to rest
+664	The archers of
+665	 loose a rain of arrows
+666	Unbreakable Will
+667	Whoever commands the dead does not bow to the fear of the living.
+668	[/color] Resolve in checks against fear, panic and mind control
