@@ -225,6 +225,104 @@ gt.Const.Necro.Util <- {
 
 	// Pode este personagem ter este perk? (tronco sempre; subclasse só a dele;
 	// perks removidos só em save antigo, antes do Juramento)
+	// =================================================================
+	// PONTOS DO GRIMÓRIO (separados dos pontos de perk normais)
+	// -----------------------------------------------------------------
+	// Ganhos: 1 por nível até GRIMORIO_NIVEL_MAX. Gastos ficam na flag
+	// FlagGrimorioGastos (vai para o save junto com o personagem).
+	// =================================================================
+	FlagGrimorioGastos = "necro_grimorio_gastos",
+	FlagGrimorioV2 = "necro_grimorio_v2",
+
+	// Saves antigos: o Grimório gastava os pontos de perk NORMAIS. Na primeira
+	// vez, conta o que já foi escolhido no Grimório (perks + Juramento), marca
+	// como gasto do Grimório e devolve esses pontos à árvore normal.
+	function migrateGrimoire( _necro )
+	{
+		local flags = _necro.getFlags();
+
+		if (flags.has(this.FlagGrimorioV2))
+		{
+			return;
+		}
+
+		flags.add(this.FlagGrimorioV2);
+		local n = this.getSubclass(_necro) != null ? 1 : 0;
+
+		foreach( id, info in ::Const.Necro.PerkInfo )
+		{
+			if (_necro.getSkills().hasSkill(id))
+			{
+				++n;
+			}
+		}
+
+		flags.set(this.FlagGrimorioGastos, n);
+
+		if (n > 0 && ("PerkPoints" in _necro.m))
+		{
+			_necro.m.PerkPoints += n;
+			_necro.m.PerkPointsSpent = ::Math.max(0, _necro.m.PerkPointsSpent - n);
+		}
+	}
+
+	function getGrimoirePoints( _necro )
+	{
+		this.migrateGrimoire(_necro);
+		local ganhos = ::Math.min(_necro.getLevel(), ::Const.Necro.GRIMORIO_NIVEL_MAX);
+		return ::Math.max(0, ganhos - _necro.getFlags().getAsInt(this.FlagGrimorioGastos));
+	}
+
+	function spendGrimoirePoint( _necro )
+	{
+		if (this.getGrimoirePoints(_necro) <= 0)
+		{
+			return false;
+		}
+
+		local flags = _necro.getFlags();
+		flags.set(this.FlagGrimorioGastos, flags.getAsInt(this.FlagGrimorioGastos) + 1);
+		return true;
+	}
+
+	function refundGrimoirePoint( _necro )
+	{
+		local flags = _necro.getFlags();
+		flags.set(this.FlagGrimorioGastos, ::Math.max(0, flags.getAsInt(this.FlagGrimorioGastos) - 1));
+	}
+
+	// Legends (mod_legends) carregado? Ele define Const.LegendMod e a lista de
+	// sprites em camadas Const.CharacterSprites (não existem no vanilla).
+	function isLegends()
+	{
+		return ("LegendMod" in ::Const) || ("Legends" in ::getroottable());
+	}
+
+	// RESPEC (Legends: actor.resetPerks, ex.: Poção do Esquecimento).
+	// Tira os perks do Grimório ANTES do respec do Legends, para que ele não
+	// os converta em pontos de perk normais, e devolve os pontos ao Grimório.
+	// O Juramento (subclasse) é permanente: continua e mantém o ponto dele.
+	// Retorna quantos perks do Grimório foram removidos.
+	function respecGrimoire( _necro )
+	{
+		this.migrateGrimoire(_necro);
+		local removidos = 0;
+
+		foreach( id, info in ::Const.Necro.PerkInfo )
+		{
+			if (_necro.getSkills().hasSkill(id))
+			{
+				_necro.getSkills().removeByID(id);
+				++removidos;
+			}
+		}
+
+		local flags = _necro.getFlags();
+		flags.set(this.FlagGrimorioGastos, this.getSubclass(_necro) != null ? 1 : 0);
+		flags.remove("necro_grimorio_adiado");
+		return removidos;
+	}
+
 	function isPerkAllowedFor( _necro, _perkID )
 	{
 		if (!(_perkID in ::Const.Necro.PerkInfo))

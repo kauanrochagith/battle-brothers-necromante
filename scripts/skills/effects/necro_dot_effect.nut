@@ -3,8 +3,8 @@
 // ---------------------------------------------------------------------
 // Um único efeito por alvo com contador de acúmulos:
 //   - cada acerto soma acúmulos (teto ACUMULO_MAX) e REINICIA a duração;
-//   - no início do turno do alvo: dano = acúmulos x dano por acúmulo,
-//     ignorando armadura; depois a duração cai em 1;
+//   - no fim do turno do alvo (ou ao esperar): dano = acúmulos x dano
+//     por acúmulo, ignorando armadura; a duração cai em 1;
 //   - Veneno e Necrose são classes diferentes, então coexistem.
 // Não é salvo no save (efeito de combate).
 // =====================================================================
@@ -48,7 +48,7 @@ this.necro_dot_effect <- this.inherit("scripts/skills/skill", {
 		return this.m.Name + " (x" + this.m.Stacks + ")";
 	}
 
-	// Dano que será causado no próximo início de turno do alvo.
+	// Dano que será causado no próximo fim de turno do alvo.
 	function getDamagePerTurn()
 	{
 		local actor = this.getContainer().getActor();
@@ -101,7 +101,7 @@ this.necro_dot_effect <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				icon = "ui/icons/health.png",
-				text = "Perde [color=" + this.Const.UI.Color.NegativeValue + "]" + this.getDamagePerTurn() + "[/color] de vida no início de cada turno, ignorando armadura"
+				text = "Perde [color=" + this.Const.UI.Color.NegativeValue + "]" + this.getDamagePerTurn() + "[/color] de vida no fim de cada turno, ignorando armadura"
 			},
 			{
 				id = 11,
@@ -121,12 +121,6 @@ this.necro_dot_effect <- this.inherit("scripts/skills/skill", {
 	// O dano é atribuído ao Necromante (se vivo) para que kills por efeito deem XP a ele.
 	function applyDamage()
 	{
-		if (this.m.LastRoundApplied == this.Time.getRound())
-		{
-			return;
-		}
-
-		this.m.LastRoundApplied = this.Time.getRound();
 		local actor = this.getContainer().getActor();
 		local damage = this.getDamagePerTurn();
 
@@ -150,18 +144,41 @@ this.necro_dot_effect <- this.inherit("scripts/skills/skill", {
 		this.Const.Necro.Util.dealDirectDamage(actor, damage, master, this);
 	}
 
-	function onTurnStart()
+	// O dano sai no FIM do turno do alvo (ou quando ele espera), como o
+	// sangramento do vanilla. Matar o alvo no INÍCIO do turno travava o
+	// combate: o jogo já tinha passado a vez para uma unidade morta.
+	function onTurnEnd()
 	{
-		this.applyDamage();
+		this.tick();
+	}
 
-		if (!this.getContainer().getActor().isAlive())
+	function onWaitTurn()
+	{
+		this.tick();
+	}
+
+	// Uma vez por rodada: contágio, dano e contagem da duração.
+	function tick()
+	{
+		if (this.m.LastRoundApplied == this.Time.getRound())
 		{
 			return;
 		}
 
-		this.spreadContagion();
+		this.m.LastRoundApplied = this.Time.getRound();
+		local actor = this.getContainer().getActor();
 
-		if (--this.m.TurnsLeft <= 0)
+		if (!actor.isAlive())
+		{
+			return;
+		}
+
+		// Contágio antes do dano: o alvo pode morrer com o dano.
+		this.spreadContagion();
+		local turnsLeft = --this.m.TurnsLeft;
+		this.applyDamage();
+
+		if (turnsLeft <= 0 && !this.isGarbage() && actor.isAlive())
 		{
 			this.removeSelf();
 		}

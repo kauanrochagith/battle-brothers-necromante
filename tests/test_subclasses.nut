@@ -141,13 +141,12 @@ foreach (subID, s in N.Subclasses)
 	foreach (id, d in dono)
 	{
 		if (d == subID) continue;
-		local pts = n.m.PerkPoints;
+		n.getFlags().set(U.FlagGrimorioGastos, 5);
 		n.getSkills().add(::new(N.PerkInfo[id].Script));
-		if (n.getSkills().hasSkill(id) || n.m.PerkPoints != pts + 1)
+		if (n.getSkills().hasSkill(id) || n.getFlags().getAsInt(U.FlagGrimorioGastos) != 4)
 		{
 			check(subID + ": perk alheio " + id + " bloqueado", false);
 		}
-		n.m.PerkPoints = pts;
 	}
 	check(subID + ": nenhum dos 70 perks alheios ficou", true);
 

@@ -540,7 +540,10 @@ local sub = {
 	// O Juramento mostra as subclasses em páginas: 4 + "Ver outras" + "Decidir depois" = 6.
 	BOTOES_MAX_EVENTO = 6,
 	JURAMENTO_POR_PAGINA = 4,
-	PONTO_EXTRA_NIVEL_1 = true,     // +1 ponto de perk no nível 1 (tronco nos níveis 1 e 2)
+	// O Grimório tem pontos PRÓPRIOS (1 por nível, até GRIMORIO_NIVEL_MAX), separados
+	// dos pontos de perk normais: a árvore de perks do jogo continua livre.
+	GRIMORIO_NIVEL_MAX = 11,
+	PONTO_EXTRA_NIVEL_1 = false,    // (antigo) +1 ponto de perk normal no nível 1; desligado
 
 	// Sem subclasse (níveis 1-2): tipos disponíveis. Limite = só o do nível.
 	TIPOS_SEM_SUBCLASSE = ["guerreiro", "arqueiro"],

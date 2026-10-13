@@ -49,10 +49,13 @@ n.onUpdate(props);
 check("necrose x3 reduz 3% do dano causado", props.DamageTotalMult > 0.969 && props.DamageTotalMult < 0.971);
 ::Time.round = 2;
 v.onTurnStart();
-check("tick: alvo perdeu 30 HP", alvo.Damage == 30);
+check("início do turno NÃO causa dano (evita travar o combate)", alvo.Damage == 0 && v.getTurnsLeft() == 4);
+v.onTurnEnd();
+check("tick no fim do turno: alvo perdeu 30 HP", alvo.Damage == 30);
 check("tick: turnos 4 -> 3", v.getTurnsLeft() == 3);
-v.onTurnStart();
-check("tick na mesma rodada não repete dano", alvo.Damage == 30);
+v.onWaitTurn();
+v.onTurnEnd();
+check("esperar + fim do turno na mesma rodada não repete dano", alvo.Damage == 30 && v.getTurnsLeft() == 3);
 U.addStacks(alvo, U.VenenoID, 1, necro.getID());
 check("novo acerto reinicia duração", v.getTurnsLeft() == 4);
 local morto = makeActor("Esqueleto", 3);
@@ -96,23 +99,23 @@ secao("5. Background isolado");
 // ------------------------------------------------------------------
 resetMundo();
 local nb = makeNecro("Novo", 1);
-check("ponto extra no nível 1", nb.getPerkPoints() == 1);
+check("nível 1: 1 ponto do Grimório e os pontos normais intactos", U.getGrimoirePoints(nb) == 1 && nb.getPerkPoints() == 0);
 check("ganha Erguer o Morto", nb.getSkills().hasSkill("actives.necro_raise_dead"));
 check("ganha Alternar Tipo", nb.getSkills().hasSkill("actives.necro_cycle_type"));
 check("ganha Vontade Inquebrável", nb.getSkills().hasSkill("special.necro_unbreakable_will"));
 check("registra Grimório e Espólios", ::SpecialEvents.find("event.necro_grimorio") != null && ::SpecialEvents.find("event.necro_espolios") != null);
 local bg2 = nb.getSkills().getSkillByID(U.BackgroundID);
 bg2.onAdded();
-check("ponto extra não é dado duas vezes (recarregar save)", nb.getPerkPoints() == 1);
+check("recarregar save não dá pontos a mais", U.getGrimoirePoints(nb) == 1 && nb.getPerkPoints() == 0);
 
 // ------------------------------------------------------------------
 secao("6. Filtro de exclusividade no próprio perk");
 // ------------------------------------------------------------------
 nb.getFlags().set(U.FlagSubclasse, "legion");
-nb.m.PerkPoints = 0; nb.m.PerkPointsSpent = 3;
+nb.getFlags().set(U.FlagGrimorioGastos, 1);
 nb.getSkills().add(::new("scripts/skills/perks/perk_necro_alcance_dos_mortos"));
 check("perk do Atirador recusado na Legião", !nb.getSkills().hasSkill("perk.necro_alcance_dos_mortos"));
-check("ponto devolvido ao recusar", nb.getPerkPoints() == 1 && nb.m.PerkPointsSpent == 2);
+check("ponto do Grimório devolvido ao recusar (normais intactos)", U.getGrimoirePoints(nb) == 1 && nb.getPerkPoints() == 0);
 nb.getSkills().add(::new("scripts/skills/perks/perk_necro_exercito_sem_fim"));
 check("perk da Legião aceito na Legião", nb.getSkills().hasSkill("perk.necro_exercito_sem_fim"));
 nb.getSkills().add(::new("scripts/skills/perks/perk_necro_ossos_reforcados"));

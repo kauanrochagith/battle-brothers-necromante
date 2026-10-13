@@ -50,22 +50,24 @@ secao("A. Fluxo completo: nível 1 -> tronco -> Juramento -> fileiras");
 // ==================================================================
 resetMundo();
 local n = makeNecro("Morbus", 1);
-check("nível 1: Grimório válido (ponto extra)", gri.isValid());
+check("nível 1: Grimório válido (ponto do Grimório)", gri.isValid());
 local t = iniciarEvento(gri, n);
 check("nível 1: abre na tela de perks (A)", gri.m.Modo == "perks");
 check("nível 1: oferece os 3 perks do tronco", temOpcao(t, "Ossos") && temOpcao(t, "Disciplina") && temOpcao(t, "Tempo de Guerra"));
 check("nível 1: nada de subclasse oferecido", perksOferecidos(gri, n).len() == 3);
 local r = clicar(gri, t, "Ossos");
 check("aprendeu Ossos Reforçados", n.getSkills().hasSkill("perk.necro_ossos_reforcados") && r.ID == "B");
-check("gastou o ponto", n.getPerkPoints() == 0 && n.m.PerkPointsSpent == 1);
+check("gastou o ponto do Grimório", U.getGrimoirePoints(n) == 0);
+check("pontos de perk normais NÃO foram gastos", n.getPerkPoints() == 0 && n.m.PerkPointsSpent == 0);
 check("sem pontos: Grimório fecha", !gri.isValid());
 subirNivel(n, 2);
 t = iniciarEvento(gri, n);
 clicar(gri, t, "Disciplina");
 check("2 perks do tronco", gri.countTrunkPerks(n) == 2);
-n.m.PerkPoints = 1;
+n.getFlags().set(U.FlagGrimorioGastos, 1);
 check("limite do tronco: 3º perk do tronco NÃO é oferecido", perksOferecidos(gri, n).len() == 0);
-n.m.PerkPoints = 0;
+n.getFlags().set(U.FlagGrimorioGastos, 2);
+check("árvore normal livre: nível 2 tem 1 ponto de perk normal", n.getPerkPoints() == 1);
 subirNivel(n, 3);
 check("nível 3: Grimório válido", gri.isValid());
 t = iniciarEvento(gri, n);
@@ -91,12 +93,13 @@ j = clicar(gri, j, "Ver outras subclasses");
 c = clicar(gri, j, "Maestro");
 local s = clicar(gri, c, "Jurar");
 check("jurou Maestro dos Ossos", U.getSubclass(n) == "maestro" && s.ID == "S");
-check("Juramento gastou o ponto do nível 3", n.getPerkPoints() == 0 && n.m.PerkPointsSpent == 3);
+check("Juramento gastou o ponto do Grimório do nível 3", U.getGrimoirePoints(n) == 0 && n.getFlags().getAsInt(U.FlagGrimorioGastos) == 3);
+check("nível 3: os 2 pontos de perk normais continuam livres", n.getPerkPoints() == 2);
 check("Maestro recebeu Marca do Comando (inata)", n.getSkills().hasSkill("actives.necro_mark"));
 check("Maestro NÃO recebeu Despertar do Mago", !n.getSkills().hasSkill("actives.necro_awaken_mage"));
 check("Juramento não reabre", !gri.needsOath(n));
 s = clicar(gri, c, "Jurar");
-check("jurar de novo não muda a subclasse", U.getSubclass(n) == "maestro" && n.m.PerkPointsSpent == 3);
+check("jurar de novo não muda a subclasse", U.getSubclass(n) == "maestro" && n.getFlags().getAsInt(U.FlagGrimorioGastos) == 3);
 subirNivel(n, 4);
 local of = perksOferecidos(gri, n);
 check("nível 4: só a fileira 1 do Maestro (3 perks)", of.len() == 3 && of.find("perk.necro_voz_do_necromante") != null && of.find("perk.necro_batuta_ossea") != null && of.find("perk.necro_sincronia") != null);
@@ -135,7 +138,8 @@ c = clicar(gri, t, "Lich");
 s = clicar(gri, c, "Jurar");
 check("migração removeu Eco, Arsenal, Alcance e Despertar", !old.getSkills().hasSkill("perk.necro_eco_do_mago") && !old.getSkills().hasSkill("perk.necro_arsenal_da_cripta") && !old.getSkills().hasSkill("perk.necro_alcance_dos_mortos") && !old.getSkills().hasSkill("perk.necro_despertar_do_mago"));
 check("migração manteve tronco e o perk do Lich (Mestre)", old.getSkills().hasSkill("perk.necro_ossos_reforcados") && old.getSkills().hasSkill("perk.necro_mestre_da_necromancia"));
-check("4 pontos devolvidos (Juramento sem ponto = grátis)", old.getPerkPoints() == 4 && old.m.PerkPointsSpent == 2);
+check("migração: 6 pontos normais devolvidos à árvore do jogo", old.getPerkPoints() == 6 && old.m.PerkPointsSpent == 0);
+check("4 pontos do Grimório devolvidos (Juramento sem ponto = grátis)", U.getGrimoirePoints(old) == 4);
 check("tela final lista os 4 devolvidos", s.List.len() == 4);
 check("Lich mantém Despertar do Mago (inata) mesmo removendo o perk antigo", old.getSkills().hasSkill("actives.necro_awaken_mage"));
 
@@ -308,6 +312,25 @@ for (local i = 0; i < 40; i++)
 	if (!achou) okPesado = false;
 }
 check("pesado no nível 1 usa a armadura da faixa seguinte", okPesado);
+
+// ==================================================================
+secao("G. Respec do Legends (resetPerks): pontos voltam ao Grimório");
+// ==================================================================
+resetMundo();
+local rp = makeNecro("Respec", 6);
+rp.getFlags().set(U.FlagSubclasse, "lich");
+foreach (p in ["perk_necro_ossos_reforcados", "perk_necro_mestre_da_necromancia"])
+	rp.getSkills().add(::new("scripts/skills/perks/" + p));
+rp.getFlags().set(U.FlagGrimorioV2, true);
+rp.getFlags().set(U.FlagGrimorioGastos, 3);
+rp.getFlags().set("necro_grimorio_adiado", 6);
+local normaisAntes = rp.getPerkPoints();
+local nrem = U.respecGrimoire(rp);
+check("respec: 2 perks do Grimório removidos", nrem == 2 && !rp.getSkills().hasSkill("perk.necro_ossos_reforcados") && !rp.getSkills().hasSkill("perk.necro_mestre_da_necromancia"));
+check("respec: Juramento mantido (subclasse e o ponto dele)", U.getSubclass(rp) == "lich" && rp.getFlags().getAsInt(U.FlagGrimorioGastos) == 1);
+check("respec: pontos voltam ao Grimório (nível 6 - Juramento = 5)", U.getGrimoirePoints(rp) == 5);
+check("respec: pontos de perk normais não mudam", rp.getPerkPoints() == normaisAntes);
+check("respec: Grimório reabre mesmo se adiado", gri.isValid());
 
 print("\nRESULTADO CONJUNTO: " + ::__ok + " ok, " + ::__falhas + " falha(s)\n");
 foreach (l in ::__log) print(l + "\n");

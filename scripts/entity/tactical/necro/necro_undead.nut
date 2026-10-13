@@ -119,6 +119,24 @@ this.necro_undead <- this.inherit("scripts/entity/tactical/skeleton", {
 		this.m.BloodSaturation = body.Saturation;
 		this.addSprite("body_injury").setBrush("bust_skeleton_body_injured");
 		this.addSprite("armor");
+
+		// Legends: armaduras em camadas usam sprites extras (o esqueleto do
+		// Legends cria estes; sem eles o jogo trava ao virar o sprite/equipar).
+		local legends = this.Const.Necro.Util.isLegends() && ("CharacterSprites" in this.Const) && ("Helmets" in this.Const.CharacterSprites);
+
+		if (legends)
+		{
+			foreach( name in [
+				"armor_layer_chain",
+				"armor_layer_plate",
+				"armor_layer_tabbard",
+				"armor_layer_cloak",
+				"armor_upgrade_back"
+			] )
+			{
+				this.addSprite(name);
+			}
+		}
 		local head = this.addSprite("head");
 		head.setBrush("bust_skeleton_head");
 		head.Color = body.Color;
@@ -145,8 +163,18 @@ this.necro_undead <- this.inherit("scripts/entity/tactical/skeleton", {
 		}
 
 		this.setSpriteOffset("hair", this.createVec(0, -3));
-		this.addSprite("helmet");
-		this.addSprite("helmet_damage");
+		if (legends)
+		{
+			foreach( name in this.Const.CharacterSprites.Helmets )
+			{
+				this.addSprite(name);
+			}
+		}
+		else
+		{
+			this.addSprite("helmet");
+			this.addSprite("helmet_damage");
+		}
 		local beard_top = this.addSprite("beard_top");
 
 		if (beard.HasBrush && this.doesBrushExist(beard.getBrush().Name + "_top"))

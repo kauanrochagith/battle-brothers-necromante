@@ -161,6 +161,8 @@ this.necromancer_background <- this.inherit("scripts/skills/backgrounds/characte
 			++actor.m.PerkPoints;
 		}
 
+		// Saves antigos: a migração dos pontos do Grimório roda depois, na primeira
+		// consulta no mapa (ao carregar, o background vem ANTES dos perks).
 		// As flags são carregadas antes das habilidades (entity.onDeserialize),
 		// então aqui já sabemos a subclasse e recriamos as ativas dela.
 		this.syncSubclassActives();

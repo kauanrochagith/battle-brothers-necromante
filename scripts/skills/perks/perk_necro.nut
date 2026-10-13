@@ -70,7 +70,7 @@ this.perk_necro <- this.inherit("scripts/skills/skill", {
 
 	// FILTRO DE EXCLUSIVIDADE (última barreira): se este perk for adicionado
 	// a um Necromante de OUTRA subclasse (por qualquer caminho), ele se remove
-	// e devolve o ponto de perk. Retorna true se o perk pode ficar.
+	// e devolve o ponto do Grimório. Retorna true se o perk pode ficar.
 	function onAdded()
 	{
 		local actor = this.getContainer().getActor();
@@ -82,11 +82,7 @@ this.perk_necro <- this.inherit("scripts/skills/skill", {
 
 		this.removeSelf();
 
-		if ("PerkPoints" in actor.m)
-		{
-			++actor.m.PerkPoints;
-			actor.m.PerkPointsSpent = this.Math.max(0, actor.m.PerkPointsSpent - 1);
-		}
+		this.Const.Necro.Util.refundGrimoirePoint(actor);
 
 		this.logWarning("Necromante: perk " + this.m.ID + " bloqueado (outra subclasse)");
 		return false;

@@ -11,8 +11,9 @@ Balanço: edite só `scripts/config/necro_constants.nut`.
 - Nova campanha → origem **"O Necromante"** (1 Necromante + 2 saqueadores de túmulos).
   Nessa origem, Necromantes também aparecem para recrutar nas cidades.
 - Em combate o Necromante tem **Erguer o Morto** e **Alternar Tipo de Morto**.
-- **Perks do Necromante = evento "O Grimório"**: quando o Necromante tem ponto de perk,
-  o evento abre sozinho no mapa. Cada escolha gasta 1 ponto de perk comum.
+- **Perks do Necromante = evento "O Grimório"**: o Grimório tem pontos PRÓPRIOS (1 por nível,
+  até o nível 11). O evento abre sozinho no mapa quando há ponto do Grimório. Os pontos de
+  perk normais NÃO são usados: a árvore de perks do jogo continua livre na aba de perks.
   Camada N libera com N-1 perks do Grimório. "Decidir depois" esconde até o próximo nível.
 
 ## Roteiro de testes (cap. 15)

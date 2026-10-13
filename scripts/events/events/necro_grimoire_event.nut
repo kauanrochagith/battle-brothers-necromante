@@ -9,8 +9,8 @@
 //      (máx. TRONCO_MAX_PERKS perks).
 //   2) Nível JURAMENTO_NIVEL sem subclasse: abre o JURAMENTO (8 subclasses,
 //      tela de confirmação, escolha PERMANENTE gravada na flag "necro_subclass").
-//      Gasta 1 ponto de perk se houver; se o Necromante já gastou tudo (save
-//      antigo), abre mesmo assim, sem cobrar.
+//      Gasta 1 ponto do Grimório se houver; se não houver (save antigo),
+//      abre mesmo assim, sem cobrar.
 //   3) Depois do Juramento: só os perks da subclasse jurada, por fileira; a
 //      fileira N abre no nível FILEIRA_NIVEL[N-1].
 //
@@ -18,7 +18,8 @@
 // subclasse do personagem; learn() confere de novo; e o próprio perk se remove
 // se cair num personagem de outra subclasse (perk_necro.onAdded).
 //
-// Cada escolha de perk gasta 1 ponto de perk comum (1 escolha por nível).
+// Cada escolha gasta 1 ponto do GRIMÓRIO (1 por nível, separado dos pontos
+// de perk normais, que ficam livres para a árvore de perks do jogo).
 // "Decidir depois" esconde o Grimório até o próximo nível.
 // =====================================================================
 
@@ -55,7 +56,7 @@ this.necro_grimoire_event <- this.inherit("scripts/events/event", {
 				local sub = util.getSubclass(necro);
 				local origem = sub == null ? "o tronco comum" : this.Const.Necro.Subclasses[sub].Nome;
 				this.Characters.push(necro.getImagePath());
-				this.Text = "[img]gfx/ui/events/event_76.png[/img]" + necro.getName() + " abre o grimório à luz de uma vela. As páginas sussurram os segredos de " + origem + " (" + _event.getGroupName(_event.m.Grupo) + ").\n\n[color=#bcad8c]Pontos de perk: " + necro.getPerkPoints() + "[/color]\n\nCada escolha gasta 1 ponto de perk.";
+				this.Text = "[img]gfx/ui/events/event_76.png[/img]" + necro.getName() + " abre o grimório à luz de uma vela. As páginas sussurram os segredos de " + origem + " (" + _event.getGroupName(_event.m.Grupo) + ").\n\n[color=#bcad8c]Pontos do Grimório: " + util.getGrimoirePoints(necro) + "[/color]\n\nCada escolha gasta 1 ponto do Grimório (ganho a cada nível). Os pontos de perk normais continuam livres para a árvore de perks do jogo.";
 
 				foreach( p in _event.getAvailableInGroup(necro, _event.m.Grupo) )
 				{
@@ -456,6 +457,9 @@ this.necro_grimoire_event <- this.inherit("scripts/events/event", {
 				continue;
 			}
 
+			// Saves antigos: converte para os pontos próprios do Grimório antes de tudo.
+			this.Const.Necro.Util.migrateGrimoire(bro);
+
 			if (bro.getFlags().getAsInt("necro_grimorio_adiado") >= bro.getLevel())
 			{
 				continue;
@@ -470,7 +474,7 @@ this.necro_grimoire_event <- this.inherit("scripts/events/event", {
 				};
 			}
 
-			if (bro.getPerkPoints() > 0 && this.getOpenGroups(bro).len() != 0)
+			if (this.Const.Necro.Util.getGrimoirePoints(bro) > 0 && this.getOpenGroups(bro).len() != 0)
 			{
 				return {
 					Necro = bro,
@@ -507,13 +511,11 @@ this.necro_grimoire_event <- this.inherit("scripts/events/event", {
 			}
 		}
 
-		if (!ok || necro.m.PerkPoints <= 0)
+		if (!ok || !this.Const.Necro.Util.spendGrimoirePoint(necro))
 		{
 			return false;
 		}
 
-		--necro.m.PerkPoints;
-		++necro.m.PerkPointsSpent;
 		necro.getSkills().add(this.new(this.Const.Necro.PerkInfo[_perkID].Script));
 		necro.getSkills().update();
 		this.m.Escolhido = _perkID;
@@ -532,14 +534,12 @@ this.necro_grimoire_event <- this.inherit("scripts/events/event", {
 			return;
 		}
 
+		util.migrateGrimoire(necro);
+
 		necro.getFlags().set(util.FlagSubclasse, _subID);
 
-		// O Juramento substitui o perk do nível 3.
-		if (necro.m.PerkPoints > 0)
-		{
-			--necro.m.PerkPoints;
-			++necro.m.PerkPointsSpent;
-		}
+		// O Juramento usa o ponto do Grimório do nível 3 (grátis se não houver).
+		util.spendGrimoirePoint(necro);
 
 		// Migração de saves antigos: perks que não são do tronco nem desta
 		// subclasse saem e devolvem o ponto.
@@ -550,8 +550,7 @@ this.necro_grimoire_event <- this.inherit("scripts/events/event", {
 			if (necro.getSkills().hasSkill(id) && !util.isPerkAllowedFor(necro, id))
 			{
 				necro.getSkills().removeByID(id);
-				++necro.m.PerkPoints;
-				necro.m.PerkPointsSpent = this.Math.max(0, necro.m.PerkPointsSpent - 1);
+				util.refundGrimoirePoint(necro);
 				this.m.Devolvidos.push(info.Nome);
 			}
 		}
